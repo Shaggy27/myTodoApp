@@ -1,0 +1,32 @@
+.outerClosebtn {
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+h6 {
+    text-align: initial;
+}
+
+.incrd {
+    width: 15rem;
+    margin-left: 10px;
+    margin-top: 8px;
+    text-align: center;
+    background-color: lightgray;
+}
+
+.addlist_btn {
+    position: absolute;
+    top: 5px;
+}
+
+.innerClosebtn {
+    cursor: pointer;
+    top: 0;
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+}

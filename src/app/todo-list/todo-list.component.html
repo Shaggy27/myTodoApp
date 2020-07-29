@@ -1,0 +1,82 @@
+<div class="container" style="padding-top: 20px; ">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-lg-4" *ngFor="let crd of cardRowArr; index as i">
+            <div class="card" style="width: 18rem; margin-top: 2rem;">
+                <div class="card-body">
+                    <div>
+                        <button class="btn outerClosebtn" (click)="deleteCard(crd)">x</button>
+                    </div>
+                    <h5 class="card-title">{{crd.name}}</h5>
+                    <br>
+                    <div class="row" *ngFor="let incrd of crd.innerCard">
+                        <div class="card incrd">
+
+                            <div class="card-body">
+                                <div>
+                                    <button class="btn innerClosebtn" (click)="deleteInnerCard(crd,incrd)">x</button>
+                                </div>
+                                <h6 class="card-title">{{incrd.name}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-info float-right" data-toggle="modal" (click)="cardVal(crd)" data-target="#newcardModal" data-whatever="@mdo">+ add a card</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 addlist_btn">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#newlistModal" data-whatever="@mdo">+ Add New List</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="newlistModal" tabindex="-1" role="dialog" aria-labelledby="newlistModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newlistModalLabel">New Task List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">List Name:</label>
+                        <input type="text" [(ngModel)]="outerText" name="outerText" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button (click)="addToList()" data-dismiss="modal" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="newcardModal" tabindex="-1" role="dialog" aria-labelledby="newcardModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newcardModalLabel">New Card</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Card Name:</label>
+                        <input type="text" class="form-control" [(ngModel)]="innerText" name="innerText" id="recipient-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" (click)="addInnerCard()" data-dismiss="modal" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
